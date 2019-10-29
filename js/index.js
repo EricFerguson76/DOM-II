@@ -57,16 +57,16 @@ adventure.onwheel = zoom;
 adventure.addEventListener('wheel', zoom);
 
 // MOUSEOVER AND MOUSEOUT
-const destination1 = document.querySelector('.destination p');
+const destination1 = document.querySelectorAll('.destination').forEach(el => {
+  el.addEventListener('mouseover', () => {
+    el.style.transform = 'scale(1.3)';
+    el.style.transition = 'all 0.4s';
+  });
 
-destination1.addEventListener('mouseover', () => {
-  destination1.style.transform = 'scale(1.3)';
-  destination1.style.transition = 'all 0.4s';
-});
-
-destination1.addEventListener('mouseout', () => {
-  destination1.style.transform = 'scale(1.0)';
-  destination1.style.transition = 'all 0.4s';
+  el.addEventListener('mouseout', () => {
+    el.style.transform = 'scale(1.0)';
+    el.style.transition = 'all 0.4s';
+  });
 });
 
 // FOCUS
@@ -76,4 +76,29 @@ navSection.forEach(aSection => {
   aSection.addEventListener('focus', () => {
     aSection.style.background = 'orange';
   });
+});
+
+// STOP PROPAGATION
+
+const header = document.querySelector('header');
+
+header.addEventListener('click', () => {
+  header.style.backgroundColor = 'blue';
+});
+
+const body = document.querySelector('body');
+
+body.addEventListener('click', () => {
+  body.style.backgroundColor = '#2F4F4F';
+});
+
+event.stopPropagation();
+
+// PREVENT DEFAULT EVENT
+const navLink = document.querySelector('.nav-link');
+
+navLink.addEventListener('click', event => {
+  console.log('stopped link');
+
+  event.preventDefault();
 });
