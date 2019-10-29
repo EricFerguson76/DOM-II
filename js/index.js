@@ -26,3 +26,14 @@ document.querySelectorAll('.text-content').forEach(el => {
     el.style.color = '#00BFFF';
   });
 });
+
+// RESIZE
+const adventureImg = document.querySelector('.img-content img');
+window.addEventListener('resize', () => {
+  adventureImg.src = 'img/kidwithmap.jpg';
+});
+
+// SCROLL
+window.addEventListener('scroll', () => {
+  document.body.style.backgroundColor = '#B0C4DE';
+});
